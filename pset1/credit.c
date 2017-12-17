@@ -51,19 +51,27 @@ int main(void)
 
         int final_sum = sum_odd + sum_even;
         int flag = digit(final_sum,1);
+        int first_num = digit(credit,length(credit));
+        int second_num = digit(credit,length(credit)-1);
+
+
         if (flag == 0)
         {
-            if (length(credit) == 15)
+            if (length(credit) == 15 && first_num == 3)
             {
                 printf("AMEX\n");
             }
-            else if (length(credit) == 13)
+            else if (length(credit) == 13 && first_num == 4)
             {
                 printf("VISA\n");
             }
-            else if (length(credit) == 16)
+            else if (length(credit) == 16 && first_num == 4)
             {
-                printf("VISA or MASTERCARD\n");
+                printf("VISA\n");
+            }
+            else if (length(credit) == 16 && first_num == 5 && (second_num >= 1 && second_num <= 5))
+            {
+                printf("MASTERCARD\n");
             }
         }
         else
