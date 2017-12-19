@@ -3,18 +3,44 @@
 #include <ctype.h>
 #include <string.h>
 
-int main(int argc, string argv[])
+int isletter(char c);
+
+int main(void)
 {
-    if (argv != NULL)
+
+    string name = get_string();
+
+    if (name != NULL)
     {
-        for (int i = 1; i < argc; i++)
+        if (name[0] != ' ')
+        {
+            printf("%c", toupper(name[0]));
+        }
+
+        for (int i = 1, n = strlen(name); i < n; i++)
         {
             // Print first letter (capitalized) of each string
-            printf("%c", toupper(argv[i][0]));
-
-
+            if (isletter(name[i]) == 0 && name[i-1] == ' ')
+            {
+                printf("%c", toupper(name[i]));
+            }
         }
         printf("\n");
+        return 0;
+    }
+    else
+    {
+        printf("Error: No input given.\n");
+        return 1;
+    }
+
+}
+
+// function that returns 0 if is ASCII character, 1 otherwise
+int isletter(char c)
+{
+    if (65 <= c && c <= 122)
+    {
         return 0;
     }
     else
