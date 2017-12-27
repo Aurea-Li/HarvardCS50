@@ -3,14 +3,8 @@
  *
  * Helper functions for Problem Set 3.
  */
-
 #include <cs50.h>
-
 #include "helpers.h"
-
-
-// temp header, delete after testing
-#include <stdio.h>
 /**
  * Returns true if value is in array of n values, else false.
  */
