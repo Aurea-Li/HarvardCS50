@@ -31,9 +31,6 @@ int main(int argc, char *argv[])
     BYTE buffer[512];
     FILE *outptr;
 
-
-
-
     // iterate loop until less than 512 bytes left
     while (fread(&buffer, 512, 1, inptr) == 1)
     {
