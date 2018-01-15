@@ -1,1 +1,44 @@
-<!-- TODO -->
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- Demonstrates table -->
+
+
+<head>
+    <title>Cost Matrix</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        table#t01 {
+            width: 100%;
+            background-color: #f1f1c1;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+        <!-- Printing out matrix -->
+
+            {% for i in range(s1|length + 1) %}
+
+                {% for j in range(s2|length + 1) %}
+                <td>{{matrix[i][j][0]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+
+
+{% endblock %}
+
+

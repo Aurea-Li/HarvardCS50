@@ -32,7 +32,9 @@ def distances(a, b):
 
     for i in range(1, row + 1):
         matrix[i][0] = (i, Operation.DELETED)
-        matrix[0][i] = (i, Operation.INSERTED)
+
+    for j in range(1, col + 1):
+        matrix[0][j] = (j, Operation.INSERTED)
 
 
     for i in range(1, row + 1):
@@ -57,6 +59,3 @@ def distances(a, b):
                 matrix[i][j] = (dist, Operation.SUBSTITUTED)
 
     return matrix
-
-
-matrix = distances('cat','ate')
