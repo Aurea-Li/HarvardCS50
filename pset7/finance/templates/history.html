@@ -9,9 +9,11 @@
         <thead>
             <tr>
                 <th>Symbol</th>
+                <th>Action</th>
                 <th>Shares</th>
                 <th>Price</th>
-                <th>Transacted</th>
+                <th>Balance Delta</th>
+                <th>Date Transacted</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +21,16 @@
                 {% for trans in history %}
                 <tr>
                     <td> {{trans['stock']}} </td>
+                    <td>
+                    {% if trans['nshares']|int < 0 %}
+                        {{"Sold Shares"}}
+                    {% else %}
+                        {{"Bought Shares"}}
+                    {% endif %}
+                    </td>
                     <td> {{trans['nshares']}} </td>
                     <td> {{trans['price'] | usd}} </td>
+                    <td> {{(-trans['nshares'] * trans['price']) | usd}} </td>
                     <td> {{trans['date']}} </td>
                 </tr>
                 {% endfor %}
