@@ -112,3 +112,20 @@ def lookup(symbol):
 def usd(value):
     """Formats value as USD."""
     return f"${value:,.2f}"
+
+def check_valid(value):
+    """Check if user input is a valid positive integer."""
+
+
+    try:
+        float(value)
+    except ValueError:
+        return False
+
+    fvalue = float(value)
+
+    # Check if valid is positive integer
+    if not fvalue.is_integer() or fvalue <= 0:
+        return False
+
+    return True

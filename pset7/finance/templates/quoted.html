@@ -6,6 +6,6 @@
 
 {% block main %}
     <h1>Stock : {{ stock['name'] }}</h1>
-        Price : {{ price }}
+        Price : {{ price | usd }}
         <br/>
 {% endblock %}
