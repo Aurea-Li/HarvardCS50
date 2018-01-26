@@ -63,9 +63,6 @@ $(document).ready(function() {
 // Add marker for place to map
 function addMarker(place)
 {
-    console.log(place);
-    console.log(place.latitude);
-    console.log(typeof place.latitude);
 
     // Instantiate marker
     var marker = new google.maps.Marker({
@@ -82,18 +79,12 @@ function addMarker(place)
     // Retrieve articles from place
     $.getJSON("/articles", parameters, function(data, textStatus, jqXHR) {
 
-        // Create content string to output to info windows
+        // Iterate through first five articles and add it to info window
+        for (let i = 0; i < 5; i++){
 
-        // Iterate through each article and add it to text
-        for (let i = 0; i < data.length; i++){
-
-            contentString += $(`<li>{{data}}.title</li>`);
-
+            contentString += `<li> <a href= "${data[i].link}" > ${data[i].title} </a> </li>`;
 
         }
-
-        //Handlebars.compile('<a href= "{{data[i].link}}" > {{data[i].title}} </a>')
-
         contentString += '</ul>';
 
     });
@@ -105,6 +96,7 @@ function addMarker(place)
 
     // Add marker to global marker list
     markers.push(marker);
+
 }
 
 
@@ -178,11 +170,13 @@ function configure()
 function removeMarkers()
 {
 
-    for (let marker in markers){
-        marker.setMap(null);
+    for (let i = 0; i < markers.length; i++){
+
+        markers[i].setMap(null);
     }
 
     markers.length = 0;
+
 
 }
 
